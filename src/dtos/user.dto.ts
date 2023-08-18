@@ -1,10 +1,10 @@
 import { IsNotEmpty, IsString, IsUrl } from "class-validator";
 
 export class CreateUserDTO {
-    @IsString()
-    @IsNotEmpty()
+    @IsString({ message: "All fields are required!" })
+    @IsNotEmpty({ message: "All fields are required!" })
     username: string
-    @IsUrl()
-    @IsNotEmpty()
+    @IsUrl({}, { message: "All fields are required!" })
+    @IsNotEmpty({ message: "All fields are required!" })
     avatar: string
 }
