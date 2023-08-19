@@ -9,4 +9,7 @@ export default class User {
     getUsername(){
         return this.username
     }
+    getAvatar(){
+        return this.avatar
+    }
 }
