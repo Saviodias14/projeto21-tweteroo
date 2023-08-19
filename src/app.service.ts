@@ -34,12 +34,22 @@ export class AppService {
     const myTweets = []
     let index = this.tweets.length
     if (page) {
-      index = index - (15 * (page-1))
+      index = index - (15 * (page - 1))
     }
     --index
     for (let i = index; (i > index - 15) && i >= 0; i--) {
       myTweets.push(this.tweets[i].getTweet())
     }
     return myTweets
+  }
+
+  getTweetsByUser(username: string) {
+    const userTweets = []
+    this.tweets.filter(e => {
+      if (e.getTweet().username === username) {
+        userTweets.push(e.getTweet())
+      }
+    })
+    return userTweets
   }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post, Query, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Query, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateUserDTO } from './dtos/user.dto';
 import { Response } from 'express';
@@ -31,6 +31,10 @@ export class AppController {
       throw new HttpException('BAD REQUEST', HttpStatus.BAD_REQUEST)
     }
     return this.appService.getTweets(newPage)
+  }
+  @Get('tweets/:username')
+  getTweetsByUser(@Param('username') username:string){
+    return this.appService.getTweetsByUser(username)
   }
 }
 
